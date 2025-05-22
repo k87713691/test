@@ -1,0 +1,99 @@
+{include file="public/header" nav="首页"}
+<link rel="stylesheet" type="text/css" href="__ROOT__/static/wap/css/box_pay.css">
+<style>	
+	body {
+		background:#f3f3f3!important;
+	}
+	.t_header {
+	    height: 1.2rem !important;
+	    width: 100%;
+	    background-color: #ffffff;
+	    display: flex;
+	    flex-direction: row;
+	    z-index: 1000;
+	}
+	.f_box_accountrecord .t_box_accountrecord ul {
+	    display: flex;
+	    flex-direction: column;
+	    padding: .533333rem .8rem;
+	    font-size: .4rem;
+	    border-top: .026666rem solid #b9b9b9;
+	    color: gray;
+	    background-color: #eaeaea;
+	    border-bottom: .026666rem solid #b9b9b9;
+	}
+</style>
+<div id="app">
+    <div class="box"><!---->
+        <div class="jun-content">
+            <div class="f_box_accountrecord">
+                <div class="t_header">
+                    <span><img src="__ROOT__/static/wap/images/icon_back.png" alt="" onClick="javascript:history.back()"></span> 
+                    <span style="color:black"><i>{$Think.lang.recharge_history}</i></span>
+                </div>
+				<div class="t_box_accountrecord">
+					{if count($recharge) > 0}
+                    {volist name="recharge" id="r"}
+                    <ul>
+                        <li>
+                            <span>{$Think.lang.key_time}：</span>
+                            <p>{$r.time}</p>
+                        </li>
+                        <li>
+                            <span>{$Think.lang.key_amount}：</span>
+                            <p>￥{$r.money}</p>
+                        </li>
+                        <li>
+                            <span>{$Think.lang.recharge_history_type}：</span>
+                            {if condition="$r['money'] eq 0"}
+                            <p>系统赠送</p>
+                            {/if}
+                            {if condition="$r['money'] neq 0"}
+                            <p>{$r.type}</p>
+                            {/if}
+                            
+                        </li>                            
+                        <li>
+                            <span>{$Think.lang.key_status}：</span>
+                            <p>
+							{if condition="$r['status'] eq 0"}
+								<span style="color: orange;">{$Think.lang.recharge_history_status3}</span>
+							{/if}
+							{if condition="$r['status'] eq 1"}
+								<span style="color: green;">{$Think.lang.recharge_history_status1}</span>
+							{/if}
+							{if condition="$r['status'] eq 2"}
+								<span style="color: red;">{$Think.lang.recharge_history_status2}</span>
+							{/if}
+                            </p>
+                        </li>
+                        {if condition="$r['send'] eq 1"}
+                        <li>
+                            <span>赠送：</span>
+                            <p>￥{$r.send_money}</p>
+                        </li> 
+                        {/if}
+						{if condition="$r['reaolae'] "}
+						<li style="color:green">
+                            <span>{$Think.lang.key_reason}：</span>
+                            <p>{$r.reaolae}</p>
+                        </li>   
+						{/if}
+                    </ul>
+                    {/volist}
+                    {else/}
+                    <div class="dataNo">
+                        <h3>{$Think.lang.key_nodata}</h3>
+                    </div>
+                    {/if}
+				</div>
+			</div>
+        </div>
+        {include file="public/footer" menu='user'}
+    </div>
+</div>
+</body>
+</html>
+
+
+

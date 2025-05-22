@@ -1,0 +1,178 @@
+{extend name='main'}
+ <link rel="stylesheet" type="text/css" href="__ROOT__/static/wap/css/box_pay.css">
+<style>
+ 
+	.t_header {
+	    height: 1.2rem;
+	    background-color: #ffffff!important;
+	    display: flex;
+	    flex-direction: row;
+	    position: relative;
+	}
+	.t_header span:last-child i {
+	    font-size: .48rem;
+	    position: absolute;
+	    left: 46%;
+	    top: 50%;
+	    transform: translate(-50%, -50%);
+	    color: black;
+	}
+	.f_box_bank .f_content ul li {
+	    height: 1.333333rem;
+	    line-height: 1.333333rem;
+	    padding-left: 1.066666rem;
+	    text-align: left;
+	    background: #e4e4e4;
+	    border-bottom: .026667rem solid #d4d4d4;
+	    position: relative;
+	    color: gray;
+	}
+	label {
+	    cursor: default;
+	    color:gray;
+	}
+	.t_box_pay .t_con_pay {
+	    flex: 1;
+	    background-color: #e4e4e4;
+	    overflow-y: scroll;
+	    -webkit-overflow-scrolling: touch;
+	}
+
+	
+</style>
+{block name="button"}
+
+{if auth("add")}
+<button data-modal='{:url("add")}' data-title="添加用户" class='layui-btn layui-btn-sm layui-btn-primary'>添加用户</button>
+{/if}
+
+{if auth("forbid")}
+<button data-action='{:url("forbid")}' data-rule="id#{key}" data-csrf="{:systoken('forbid')}" data-confirm="确定要冻结这些用户吗？" class='layui-btn layui-btn-sm layui-btn-primary'>冻结用户</button>
+{/if}
+
+{if auth("remove")}
+<button data-action='{:url("remove")}' data-rule="id#{key}" data-csrf="{:systoken('remove')}" data-confirm="确定要删除这些用户吗？" class='layui-btn layui-btn-sm layui-btn-primary'>删除用户</button>
+{/if}
+
+{/block}
+
+{block name="content"}
+<div class="think-box-shadow">
+    {include file='users/index_search'}
+    
+    <table class="layui-table margin-top-10" lay-skin="line">
+        {notempty name='list'}
+        <thead>
+        <tr>
+            <th class='list-table-check-td think-checkbox'>
+                <label><input data-auto-none data-check-target='.list-check-box' type='checkbox'></label>
+            </th>
+            <th class='text-left nowrap'>用户信息</th>
+            <th class='text-left nowrap'>用户资料</th>
+            <th class='text-left nowrap'>用户资金（点击金额查看）</th>
+            <th class='text-left nowrap'>用户详情</th>
+            <th class='text-left nowrap'>时间</th>
+             <th class='text-left nowrap'>备注</th>
+            <th class='text-left nowrap'></th>
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr data-dbclick style="background:{$vo.robot==1?'#b3b3b3':'white'}">
+            <td class='list-table-check-td think-checkbox'>
+                <label><input class="list-check-box" value='{$vo.id}' type='checkbox'></label>
+            </td>
+            <td class='text-left nowrap'>
+                ID：{$vo.id|default='--'}<br>
+                注册姓名：{$vo.name|default='--'}<br>
+                持卡姓名：{$vo.bank_name|default='--'}<br>
+                用户名：<a data-title="查看流水" data-open='{:url("akszadmin/finance/index")}?u_phone={$vo.phone}'>{$vo.phone|default='--'}</a><br>
+                 手机号：<a data-title="查看流水" data-open='{:url("akszadmin/finance/index")}?u_phone={$vo.phone}'>{$vo.phonenumber|default='--'}</a><br>
+                状态：
+                {eq name='vo.online' value='false'}
+                <span class="color-desc">离线</span>
+                {else}
+                <span class="color-green">在线</span>
+                {/eq}
+                <br>
+                实名：
+                {eq name='vo.c_name' value='0'}
+                <span class="color-red">{$vo.robot==1?'假人':'未实名'}</span>
+                {else}
+                <span class="color-green">{$vo.robot==1?'假人':'已实名'}</span>
+                {/eq}<br>
+            </td>
+            <td class='text-left nowrap'>
+                会员等级：{$vo.m_name|default='--'}<br>
+                推荐人：{$vo.top|default='--'}<br>
+                IP：{$vo.ip|default='--'}<br>
+                ISP：{$vo.isp|default='--'}<br>
+            </td>
+            <td class='text-left nowrap'>
+                账户余额：<a data-title="查看充值记录" class="color-red" data-open='{:url("akszadmin/recharge/index")}?u_phone={$vo.phone}'>{$vo.money|default='--'} 元</a><br>
+                提现总额：<a data-title="查看提现" class="color-green" data-open='{:url("akszadmin/cash/index")}?u_phone={$vo.phone}&i_status=1'>{$vo.cash_sum|default='--'} 元</a><br>
+                充值总额：<a data-title="查看充值记录" style="color: orange" data-open='{:url("akszadmin/recharge/index")}?u_phone={$vo.phone}&i_status=1'>{$vo.recharge_sum|default='--'} 元</a><br>
+                投资总额：<a data-title="查看投资" data-open='{:url("akszadmin/invest/index")}?u_phone={$vo.phone}'>{$vo.invest_sum|default='--'} 元</a><br>
+                赠送总额：{$vo.send_total|default='--'} 元<br>
+
+            </td>
+            <td class='text-left nowrap'>
+                待收利息：{$vo.wait_invest|default='--'} 元<br>
+                待收本金：{$vo.wait_money|default='--'} 元<br>
+                成长值：{$vo.value|default='--'}<br>
+            </td>
+            <td class='text-left nowrap'>
+                用户状态：
+                {eq name='vo.clock' value='0'}
+                <span class="color-red">已冻结</span>
+                {else}
+                <span class="color-green">正常</span>
+                {/eq}<br>
+                注册时间：{$vo.time}<br>
+                最近操作：{$vo.logintime|format_datetime}<br>
+				登陆IP：{$vo.loginip|default='--'}<br>
+                ISP：{$vo.isp2|default='--'}<br>
+            </td>
+             <td >
+                   
+ <span style="display:block;overflow-wrap:break-word;"><font color="#ff0505">{$vo.beizhu|default=''|raw}</font></span>
+
+         
+         
+         
+         
+            </td>
+            <td class='text-left nowrap'>
+				{if $vo.isjy == 1}
+                    <a class="layui-btn layui-btn-sm layui-btn-danger" data-confirm="确定要开启交易功能吗?" data-action="{:url('iskqopen')}" data-value="id#{$vo.id};iskq#0" data-csrf="{:systoken('iskqopen')}">交易关闭</a>
+                    {else /}
+                    <a class="layui-btn layui-btn-sm layui-btn-success" data-confirm="确定要关闭交易功能吗?" data-action="{:url('iskqopen')}" data-value="id#{$vo.id};iskq#1" data-csrf="{:systoken('iskqopen')}">交易开启</a>
+                    {/if}
+                {if auth("edit")}
+                <a data-dbclick class="layui-btn layui-btn-sm" data-title="编辑用户" data-modal='{:url("edit")}?id={$vo.id}'>编 辑</a>
+
+                <a class="layui-btn layui-btn-sm layui-btn-danger"  data-title="充值用户" data-modal='{:url("recharge")}?id={$vo.id}'>充 值</a>
+                 
+                 <a data-dbclick class="layui-btn layui-btn-sm" data-title="修改银行" data-modal='{:url("userbankedits")}?id={$vo.id}'>修改银行</a><br>
+                 <br>
+                <a data-dbclick class="layui-btn layui-btn-sm" data-title="修改USDT" data-modal='{:url("useredits")}?id={$vo.id}'>修改USDT</a>
+                {/if}
+
+                {if $vo.clock eq 1 and auth("forbid")}
+                <a class="layui-btn layui-btn-sm layui-btn-warm" data-action="{:url('forbid')}" data-value="id#{$vo.id};clock#0" data-csrf="{:systoken('forbid')}">冻 结</a>
+                {elseif $vo.clock eq 0 and auth("resume")}
+                <a class="layui-btn layui-btn-sm layui-btn-warm" data-action="{:url('resume')}" data-value="id#{$vo.id};clock#1" data-csrf="{:systoken('resume')}">解 冻</a>
+                {/if}
+                 
+                 <a style="margin-top:5px" class="layui-btn layui-btn-sm layui-btn-danger" data-action="{:url('setrobot')}" data-value="id#{$vo.id};clock#{$vo.robot==1?0:1}" data-csrf="{:systoken('setrobot')}">{$vo.robot==1?"设置成真人":"设置成假人"}</a>
+                 <a data-dbclick class="layui-btn layui-btn-sm" data-title="编辑备注" data-modal='{:url("edit")}?id={$vo.id}'>编辑备注</a>
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {empty name='list'}<span class="notdata">没有记录哦</span>{else}{$pagehtml|raw|default=''}{/empty}
+</div>
+
+{/block}

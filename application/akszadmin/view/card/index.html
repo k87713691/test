@@ -1,0 +1,108 @@
+{extend name='akszadmin@main'}
+
+
+
+{block name="content"}
+
+<style>
+.image-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* 确保在最上层 */
+}
+
+.image-viewer img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.hide {
+    display: none;
+}
+</style>
+<div class="think-box-shadow">
+    <table class="layui-table margin-top-10" lay-skin="line">
+        {notempty name='list'}
+        <thead>
+        <tr>
+            <th class='list-table-check-td think-checkbox'>
+                <input data-auto-none data-check-target='.list-check-box' type='checkbox'>
+            </th>
+            <th class='text-center nowrap'>用户id</th>
+            <th class="text-center">姓名</th>
+            <th class="text-center">身份证</th>
+            <th class="text-center">身份证正面</th>
+            <th class="text-center">身份证反面</th>
+            <th class="text-center">审核状态</th>
+            <th class="text-center"></th>
+        </tr>
+        </thead>
+        {/notempty}
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr>
+            <td class='list-table-check-td think-checkbox'>
+                <input class="list-check-box" value='{$vo.id}' type='checkbox'>
+            </td>
+            <td class='text-center nowrap'>
+                {$vo.id|default=''}
+            </td>
+            <td class='text-center nowrap'>
+                {$vo.name|default=''}
+            </td>
+            <td class='text-center nowrap'>
+                {$vo.id_card|default=''}
+            </td>
+            <td class='text-center nowrap'>
+                <img src="{$vo.id_card_front|default=''}" width='50' height='50' class="preview-image" onclick="openViewer('{$vo.id_card_front|default=''}')" alt="身份证正面">
+            </td>
+            <td class='text-center nowrap'>
+                <img src="{$vo.id_card_back|default=''}" width='50' height='50' class="preview-image" onclick="openViewer('{$vo.id_card_back|default=''}')" alt="身份证反面">
+            </td>
+            <td class='text-center nowrap'>
+                {if $vo.status==0}未审核{elseif $vo.status==1}已通过{else}未通过{/if}
+            </td>
+            <td class='text-center nowrap'>
+                {if auth("akszadmin/card/edit")}
+                    {if $vo.status==0}
+                    <a class="layui-btn" data-action="{:url('statusup')}" data-value="id#{$vo.id}" data-csrf="{:systoken('statusup')}">审核通过</a>
+                    <a class="layui-btn" data-action="{:url('statusdown')}" data-value="id#{$vo.id}" data-csrf="{:systoken('statusdown')}">拒绝通过</a>
+                    {/if}
+                {/if}
+
+                {if auth("akszadmin/card/remove")}
+                <a class="layui-btn layui-btn-sm layui-btn-danger" data-confirm="确定要删除数据吗?" data-action="{:url('remove')}" data-value="id#{$vo.id}" data-csrf="{:systoken('remove')}">删 除</a>
+                {/if}
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {empty name='list'}<span class="notdata">没有记录哦</span>{else}{$pagehtml|raw|default=''}{/empty}
+</div>
+
+<div id="imageViewer" class="image-viewer hide" onclick="closeViewer()">
+    <img id="fullImage" src="" alt="查看图片">
+</div>
+
+<script>
+function openViewer(imgSrc) {
+    // 设置查看器中的图片源
+    document.getElementById('fullImage').src = imgSrc;
+    // 显示查看器
+    document.getElementById('imageViewer').classList.remove('hide');
+}
+
+function closeViewer() {
+    // 隐藏查看器
+    document.getElementById('imageViewer').classList.add('hide');
+}
+</script>
+{/block}

@@ -1,0 +1,66 @@
+<form onsubmit="return false;" action="/akszadmin/users/useredits" data-auto="true" method="post" class='layui-form layui-card' autocomplete="off">
+
+    <div class="layui-card-body">
+      <input type="hidden" name="id" required value="{$vo.id|default=''}" readonly class="layui-input">
+	  <input type="hidden" name="buytimes" required value="{$vo.buytime|default=''}" readonly class="layui-input">
+	  
+        <div class="layui-row margin-bottom-15">
+            <label class="layui-col-xs2 think-form-label">产品名称：</label>
+            <label class="layui-col-xs10">
+			    <select name="pid"  class="layui-select"  required  lay-search  >
+			     {volist name="bank" id="bank"}
+			 
+		 <option selected  value="{$bank.id}" >{$bank.id} 用户姓名:{$bank.name} </option>
+		   
+          
+         
+			 	</select>
+                     
+ 
+	 
+                   
+		  {/volist}
+			 
+            
+            </label>
+        </div>
+       		<div class="layui-row margin-bottom-15">
+            <label class="layui-col-xs2 think-form-label">会员ID</label>
+            <label class="layui-col-xs10">
+                <input name="id"  value="{$bank.uid|default=''}" readonly class="layui-input">
+            </label>
+        </div>       
+		<div class="layui-row margin-bottom-15">
+            <label class="layui-col-xs2 think-form-label">账号类型/名称</label>
+            <label class="layui-col-xs10">
+                <input name="bank"  value="{$bank.bank|default=''}"   class="layui-input">
+            </label>
+        </div>
+		
+       
+
+        <div class="layui-row margin-bottom-15">
+            <label class="layui-col-xs2 think-form-label">地址：</label>
+            <label class="layui-col-xs10">
+                <input type="text" name="account" value="{$bank.account|default=''}"  class="layui-input">
+            </label>
+        </div>
+		 
+       
+	 
+    </div>
+
+    <div class="hr-line-dashed"></div>
+    <div class="layui-form-item text-center">
+        {notempty name='vo.id'}<input type='hidden' value='{$vo.id}' name='id'>{/notempty}
+        <button class="layui-btn" type='submit'>保存数据</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-confirm="确定要取消编辑吗？" data-close>取消编辑</button>
+    </div>
+</form>
+{block name='script'}
+<script>
+    window.form.render();
+</script>
+{/block}
+
+

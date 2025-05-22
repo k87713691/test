@@ -1,0 +1,59 @@
+<fieldset>
+    <legend>条件搜索</legend>
+     <script>
+        function redirect() {
+            var selectElement = document.getElementById("mySelect");
+            var selectedOption = selectElement.value;
+
+            if (selectedOption === "1") {
+                var url = '/akszadmin.html#/akszadmin/order/xy_setup/' + selectedOption;
+                window.location.href = url;
+            } else if (selectedOption === "2") {
+                var url = '/akszadmin.html#/akszadmin/order/xy_setup/' + selectedOption;
+                window.location.href = url;
+
+            } else if (selectedOption === "3") {
+                var url = '/akszadmin.html#/akszadmin/order/xy_setup/' + selectedOption;
+                window.location.href = url;
+
+            }
+        }
+
+    </script>
+    <form class="layui-form layui-form-pane form-search" action="{:request()->url()}" onsubmit="return false" method="get" autocomplete="off">
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-inline">
+                <input name="u_phone" value="{$Think.get.u_phone|default=''}" placeholder="请输入用户名" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <label class="layui-form-label">下单日期</label>
+            <div class="layui-input-inline">
+                <input data-date-range name="i_time" value="{$Think.get.i_time|default=''}" placeholder="请选择下单日期" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-inline">
+            <button class="layui-btn layui-btn-primary"><i class="layui-icon">&#xe615;</i> 搜 索</button>
+        </div>
+		<div class="layui-form-item layui-inline">
+             {if $type==1}
+			  <a  data-dbclick  data-open='{:url("index")}?type=0'   style="margin-left:15px;"> 停止刷新</a>
+			 {else}
+			 <a data-dbclick data-open='{:url("index")}?type=1'  style="margin-left:15px;">自动刷新</a>
+			 {/if}
+			 
+        </div>&nbsp;&nbsp;&nbsp;
+		      
+    </form>
+     <div class="layui">
+    	<li lay-unselect class="layui-form-select">
+             <select id="mySelect" onchange="redirect()">
+                    {foreach $sele as $se}
+                    <option value="{$se.id}" {$se.select}>{$se.name}</option>
+                    {/foreach}
+                </select></li>&nbsp;&nbsp;&nbsp;
+                  </div>&nbsp;&nbsp;&nbsp;
+    <script>form.render()</script>
+      
+</fieldset>

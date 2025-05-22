@@ -1,0 +1,282 @@
+{include file="public/header" nav="首页"}
+<style>
+	body{background:#efefef!important;}
+	.f_box_mine {
+	    flex: 1;
+	    display: flex;
+	    flex-direction: column;
+	    background: #efefef;
+	}
+</style>
+    <div id="app">
+        <div class="box">
+            <div class="jun-content">
+                <div class="f_box_mine slide">
+                    <!--头部-->
+                    <div style="position: relative;height: 45%;text-align: center;background: url(&quot;../../static/wap/images/user_bg.png&quot;)no-repeat;background-size: 100% 100%;">
+                		<div class="img_cion" style="width: 80px;    height: 80px;    display: inline-block;    margin-top: 30px;">
+                            <img src="/static/theme/index/img/userimg.png" alt="" class="f_mine_header" data-src="/static/theme/index/img/userimg.png" lazy="loaded" style="    border-radius: 50px;    border: 3px solid rgba(255,255,255,0.3);">
+                        </div>
+                        <p style="margin-top:20px;color: white;font-size: 16px;"><span>{$user.phone}</span></p>
+                        <p><span style="display: inline-block;width: 100px;line-height: 20px;height: 20px;font-size: 16px;color: #ffffff;background: #7d5dd8;border-radius: 3px;">{$userleveltile.name}</span></p>
+                        <div class="f_tab1">
+                        	<span>
+                                <p>{$user.money}</p>
+                                <p>可用余额</p>
+                            </span> 
+                            <!--<span>-->
+                            <!--    <p>0.00</p>-->
+                            <!--    <p>已获赠金</p>-->
+                            <!--</span> -->
+                        </div>
+                        <!--<marquee>-->
+                        <!--    <font color=red>{:getInfo('notice')}</font>-->
+                        <!--</marquee>-->
+                       <div class="f_tab2" style="height: 80px;line-height: 80px;vertical-align: middle;" >
+                            <span style="display:inline-block;width: 140px;color: back;background: rgba(255,255,255,0.5);height: 40px;line-height: 40px;border-radius: 10px;margin-right: 10px;" onclick="window.location.href='recharge'">
+                                <a href="/index/user/recharge" class="">
+                                    <p>{$Think.lang.key_recharge}</p>
+                                </a>
+                            </span> 
+                            <span style="display:inline-block;width: 140px;color: back;background: rgba(255,255,255,0.5);height: 40px;line-height: 40px;border-radius: 10px;margin-left: 10px;" onclick="window.location.href='cash'">
+                                <a href="/index/user/cash" class="">
+                                    <p>{$Think.lang.key_withdraw}</p>
+                                </a>
+                            </span>
+                        </div>
+                	</div>
+	            	<!--头部结束-->
+	            	<!--中部-->
+	            	<style>
+	            		.itemlists div{
+	            			border-bottom: 2px solid #efefef;
+	            		}
+	            	</style>
+	            	<div>
+	            		<!--1part
+	            		<div class="itemlists" style="margin-top: 10px;background: white;">
+	            			<div style="background: white;height: 50px;line-height: 50px;padding: 0 10px;">
+		            			<img src="../../static/wap/images/icon_user_1.38a51fad.png" style="width: 30px;height: 30px;top: 50%;position: relative;transform: translate(0,-50%);">
+							    <span style="margin-left: 10px;">{$Think.lang.assets_detail}</span>
+							    <img style="float: right;top: 50%;position: relative;transform: translate(0,-50%);" src="../../static/wap/images/jt.png">
+						    </div>-->
+						    <div style="background: white;height: 50px;line-height: 50px;padding: 0 10px;" onclick="window.location.href='cash_record'">
+		            			<img src="../../static/wap/images/icon_user_2.2288bc7a.png" style="width: 30px;height: 30px;top: 50%;position: relative;transform: translate(0,-50%);">
+							    <span style="margin-left: 10px;">{$Think.lang.withdraw_record}</span>
+							    <img style="float: right;top: 50%;position: relative;transform: translate(0,-50%);" src="../../static/wap/images/jt.png">
+						    </div>
+						     <div style="background: white;height: 50px;line-height: 50px;padding: 0 10px;" onclick="window.location.href='recharge_record'">
+		            			<img src="../../static/wap/images/icon_user_2.2288bc7a.png" style="width: 30px;height: 30px;top: 50%;position: relative;transform: translate(0,-50%);">
+							    <span style="margin-left: 10px;">{$Think.lang.recharge_record}</span>
+							    <img style="float: right;top: 50%;position: relative;transform: translate(0,-50%);" src="../../static/wap/images/jt.png">
+						    </div>
+						    <div style="background: white;height: 50px;line-height: 50px;padding: 0 10px;" onclick="window.location.href='hold'">
+		            			<img src="../../static/wap/images/icon_user_3.98bff3b4.png" style="width: 30px;height: 30px;top: 50%;position: relative;transform: translate(0,-50%);">
+							    <span style="margin-left: 10px;">{$Think.lang.order_record}</span>
+							    <img style="float: right;top: 50%;position: relative;transform: translate(0,-50%);" src="../../static/wap/images/jt.png">
+						    </div>
+						 </div>
+	            		<!--2part-->
+	            		<div class="itemlists"  style="margin-top: 10px;background: white;">
+	            		<!--	<div style="background: white;height: 50px;line-height: 50px;padding: 0 10px;" onclick="window.location.href='#'">
+		        <!--    			<img src="../../static/wap/images/icon_user_4.202ee3b3.png" style="width: 30px;height: 30px;top: 50%;position: relative;transform: translate(0,-50%);">-->
+							<!--   <span style="margin-left: 10px;">{$Think.lang.user_information}</span>-->
+							 <!--   <img style="float: right;top: 50%;position: relative;transform: translate(0,-50%);" src="../../static/wap/images/jt.png">-->
+						    <!--</div>-->
+						    <div style="background: white;height: 50px;line-height: 50px;padding: 0 10px;" onclick="window.location.href='bank_card'">
+		            			<img src="../../static/wap/images/icon_user_5.511f0cc1.png" style="width: 30px;height: 30px;top: 50%;position: relative;transform: translate(0,-50%);">
+							    <span style="margin-left: 10px;">{$Think.lang.user_payment}</span>
+							    <img style="float: right;top: 50%;position: relative;transform: translate(0,-50%);" src="../../static/wap/images/jt.png">
+						    </div>
+						    <div style="background: white;height: 50px;line-height: 50px;padding: 0 10px;" onclick="window.location.href='recommend'">
+		            			<img src="../../static/wap/images/icon_user_6.779e8264.png" style="width: 30px;height: 30px;top: 50%;position: relative;transform: translate(0,-50%);">
+							    <span style="margin-left: 10px;">{$Think.lang.user_share}</span>
+							    <img style="float: right;top: 50%;position: relative;transform: translate(0,-50%);" src="../../static/wap/images/jt.png">
+						    </div>
+						 </div>
+						 <!--3part-->
+						 <div class="itemlists" style="margin-top: 0px;background: white;" >
+	            			<div style="background: white;height: 50px;line-height: 50px;padding: 0 10px;" onclick="window.location.href='set_account'">
+		            			<img src="../../static/wap/images/icon_user_10.safe.png" style="width: 30px;height: 30px;top: 50%;position: relative;transform: translate(0,-50%);">
+							    <span style="margin-left: 10px;">{$Think.lang.user_security}</span>
+							    <img style="float: right;top: 50%;position: relative;transform: translate(0,-50%);" src="../../static/wap/images/jt.png">
+						    </div>
+						    <div style="background: white;height: 50px;line-height: 50px;padding: 0 10px;" onclick="showlang(1)">
+		            			<img src="../../static/wap/images/icon_user_10.6d36f5a0.png" style="width: 30px;height: 30px;top: 50%;position: relative;transform: translate(0,-50%);">
+							    <span style="margin-left: 10px;">{$Think.lang.language_change}</span>
+							    <img style="float: right;top: 50%;position: relative;transform: translate(0,-50%);" src="../../static/wap/images/jt.png">
+							    <span style="float: right;color: lightgray;margin-right: 5px;">{$Think.lang.key_language}</span>
+						    </div>
+						    
+						 </div>
+						<div class="itemlists" style="margin-top: 10px;background: white;    margin-bottom: 55px;">
+							<div style="background: white;height: 50px;line-height: 50px;padding: 0 10px;" onclick="window.location.href='{:getInfo('app')}'">
+		        <!--    			<img src="/static/theme/index/img/icon_index_11.png" style="width: 30px;height: 30px;top: 50%;position: relative;transform: translate(0,-50%);">-->
+							<!--    <span style="margin-left: 10px;">{$Think.lang.app_download}</span>-->
+							<!--    <img style="float: right;top: 50%;position: relative;transform: translate(0,-50%);" src="../../static/wap/images/jt.png">-->
+						 <!--   </div>-->
+						 <!--   <div style="background: white;height: 50px;line-height: 50px;padding: 0 10px;" onclick="window.location.href='msg'">
+		            			<img src="/static/theme/index/img/xx.png" style="width: 30px;height: 30px;top: 50%;position: relative;transform: translate(0,-50%);">
+							    <span style="margin-left: 10px;">{$Think.lang.user_message}</span>
+							    <img style="float: right;top: 50%;position: relative;transform: translate(0,-50%);" src="../../static/wap/images/jt.png">-->
+						   <!-- </div>-->
+						    <div style="background: white;height: 50px;line-height: 50px;padding: 0 10px;" onclick="window.location.href='../index/notice'">
+		            			<img src="/static/wap/images/icon_my_announcement@2x.png" style="width: 30px;height: 30px;top: 50%;position: relative;transform: translate(0,-50%);">
+							    <span style="margin-left: 10px;">{$Think.lang.notice}</span>
+							    <img style="float: right;top: 50%;position: relative;transform: translate(0,-50%);" src="../../static/wap/images/jt.png">
+						    </div>
+						    <div style="background: white;height: 50px;line-height: 50px;padding: 0 10px;" onclick="window.location.href='logout'">
+		            			<img src="/static/wap/images/icon_my_pull_out@2x.png" style="width: 30px;height: 30px;top: 50%;position: relative;transform: translate(0,-50%);">
+							    <span style="margin-left: 10px;">{$Think.lang.user_quit}</span>
+							    <img style="float: right;top: 50%;position: relative;transform: translate(0,-50%);" src="../../static/wap/images/jt.png">
+						<!--    </div>-->
+					<!--	</div>-->
+						
+	      <!--          	<div class="f_table">-->
+	      <!--                  <div class="el-col el-col-6" id="i2">-->
+	      <!--                      <a href="/index/user/inquiries" class="">-->
+	      <!--                          <img src="/static/wap/images/icon_my_search@2x.png" alt="" class="i2" data-src="/static/wap/images/icon_my_search@2x.png" lazy="loaded">-->
+	      <!--                          <p>平仓查询</p>-->
+	      <!--                      </a>-->
+	      <!--                  </div>-->
+	      <!--                  <div class="el-col el-col-6" id="i3">-->
+	      <!--                      <a href="/index/user/fund" class="">-->
+	      <!--                          <img src="/static/wap/images/icon_my_revenue_and_expenditure@2x.png" alt="" class="i3" data-src="/static/wap/images/icon_my_revenue_and_expenditure@2x.png" lazy="loaded">-->
+	      <!--                          <p>收支明细</p>-->
+	      <!--                      </a>-->
+	      <!--                  </div>-->
+	      <!--                  <div class="el-col el-col-6" id="i6">-->
+	      <!--                      <a href="/index/index/notice" class="">-->
+	      <!--                          <img src="/static/wap/images/icon_my_announcement@2x.png" alt="" class="i6" data-src="/static/wap/images/icon_my_announcement@2x.png" lazy="loaded">-->
+	      <!--                          <p>最新公告</p>-->
+	      <!--                      </a>-->
+	      <!--                  </div>-->
+	      <!--                  <div class="el-col el-col-6" id="i7">-->
+	      <!--                      <a href="/index/user/bank_card" class="">-->
+	      <!--                          <img src="/static/wap/images/icon_my_bank_card@2x.png" alt="" class="i7" data-src="/static/wap/images/icon_my_bank_card@2x.png" lazy="loaded">-->
+	      <!--                          <p>银行卡</p>-->
+	      <!--                      </a>-->
+	      <!--                  </div>-->
+	      <!--                  <div class="el-col el-col-6" id="i8">-->
+	      <!--                      <a href="/index/user/recommend" class="">-->
+	      <!--                          <img src="/static/wap/images/icon_my_agency@2x.png" alt="" class="i8" data-src="/static/wap/images/icon_my_agency@2x.png" lazy="loaded">-->
+	      <!--                          <p>推广码</p>-->
+	      <!--                      </a>-->
+	      <!--                  </div>-->
+	      <!--                  <div class="el-col el-col-6" id="i9">-->
+	      <!--                      <a onClick="window.open('{:getInfo('service')}','_blank');" class="">-->
+	      <!--                          <img src="/static/wap/images/icon_my_vouchers@2x.png" alt="" class="i9" data-src="/static/wap/images/icon_my_vouchers@2x.png" lazy="loaded">-->
+	      <!--                          <p>在线客服</p>-->
+	      <!--                      </a>-->
+	      <!--                  </div>-->
+	      <!--                  <div class="el-col el-col-6">-->
+	      <!--                      <a href="/index/user/set_account" class="">-->
+	      <!--                          <img src="/static/wap/images/icon_my_cipher@2x.png" alt="" data-src="/static/wap/images/icon_my_cipher@2x.png" lazy="loaded">-->
+	      <!--                          <p>账号安全</p>-->
+	      <!--                      </a>-->
+	      <!--                  </div>-->
+	      <!--                  <div class="el-col el-col-6">-->
+	      <!--                      <a href="/index/user/msg" class="">-->
+							<!--	  {if $msg}-->
+							<!--	    <div style="position:relative;right:-23px;top:15px;background:red;width:20px;height:20px;line-height:20px;border-radius:15px;">{$msg}</div> -->
+							<!--	   {/if}	-->
+	      <!--                          <img src="/static/theme/index/img/xx.png" alt="" data-src="/static/theme/index/img/xx.png" lazy="loaded">-->
+	      <!--                          <p>站内消息</p>-->
+	      <!--                      </a>-->
+	      <!--                  </div>-->
+	      <!--                  <div class="el-col el-col-6">-->
+	      <!--                      <a href="{:getInfo('app')}" class="">-->
+	      <!--                          <img src="/static/theme/index/img/icon_index_11.png" alt="" data-src="/static/theme/index/img/icon_index_11.png" lazy="loaded">-->
+	      <!--                          <p>APP下载</p>-->
+	      <!--                      </a>-->
+	      <!--                  </div>-->
+							<!--<div class="el-col el-col-6" id="i3">-->
+	      <!--                      <a href="/index/user/recharge_record" class="">-->
+	      <!--                          <img src="/static/wap/images/icon_my_revenue_and_expenditure@2x.png" alt="" class="i3" data-src="/static/wap/images/icon_my_revenue_and_expenditure@2x.png" lazy="loaded">-->
+	      <!--                          <p>充值记录</p>-->
+	      <!--                      </a>-->
+	      <!--                  </div>-->
+							<!--<div class="el-col el-col-6" id="i3">-->
+	      <!--                      <a href="/index/user/cash_record" class="">-->
+	      <!--                          <img src="/static/wap/images/icon_my_revenue_and_expenditure@2x.png" alt="" class="i3" data-src="/static/wap/images/icon_my_revenue_and_expenditure@2x.png" lazy="loaded">-->
+	      <!--                          <p>提现记录</p>-->
+	      <!--                      </a>-->
+	      <!--                  </div>-->
+	      <!--                 <div class="el-col el-col-6">
+	                           <div>
+	                                <a href="/index/user/logout" class="">
+	      <1--                            <img src="/static/wap/images/icon_my_pull_out@2x.png" alt="" data-src="/static/wap/images/icon_my_pull_out@2x.png" lazy="loaded">-->
+	       <!--                            <p>退出登录</p>-->
+	       <!--                        </a>
+	                           </div>
+	                        </div>
+	                    </div>
+	                </div>-->
+	                
+	             <!--   <div class="jun-empty"></div>-->
+	                <!--中部结束-->
+                        	
+                    
+                </div>
+                <style>
+                	#langdiv span{
+                		display: inline-block;
+					    width: 100px;
+					    height: 50px;
+					    line-height: 50px;
+					    border-bottom: 2px solid;
+                	}
+                </style>
+                <div id="langdiv" style="display: none;position: fixed;height: 100%;background: rgb(0 0 0 / 63%);width: 100%;" onclick="showlang(0)">
+                    <div id="langlist" style="display: block;position: relative;width: 80%;line-height: 30px;text-align: center;background: rgb(255 255 255);border-radius: 10px;top: 50%;left: 50%;transform: translate(-50%,-50%);">
+                    <span id="langcns" onclick="changelang('zh')">简体中文</span><br>
+                    <span id="langcng" onclick="changelang('hk')">繁体中文</span><br>
+                    <span id="langen" onclick="changelang('en')">English</span><br>
+                    <span id="langth" onclick="changelang('th')">ภาษาไทย</span><br>
+                    <span id="langth" onclick="changelang('jp')">日本语</span><br>
+                    <span id="langth" onclick="changelang('kor')">한국어</span><br>
+                    <span id="langth" onclick="changelang('fr')">Français</span><br>
+                    <span id="langth" onclick="changelang('de')">Deutsch</span><br>
+                    <span id="langth" onclick="changelang('es')">español</span>
+                    </div>
+                </div>
+                {include file="public/footer" menu='user'}
+                <script src="http://v.maku.fun/jequery.js"></script>
+                <script>
+                	function showlang(id){
+                		if(id==1){
+                			document.getElementById('langdiv').style.display="block";
+                		}else{
+                			document.getElementById('langdiv').style.display="none";
+                		}
+                		
+                	}
+                </script>
+                <script>
+					function changelang(t){
+					if(t=="list"){
+						$('#langlist').fadeToggle();return;
+					}else{
+						$.ajax({
+								type:'get',
+								url:'/index/index/changelang?lang='+t,
+								dataType : "json",
+								success : function(res){
+									console.log(t);
+									window.localStorage.setItem('lang',t);
+									var td=$('#lang'+t).text();
+									$('#langset').text(td);
+									//$('#langlist').fadeToggle();
+									window.location.reload();
+									
+								}
+								
+							})
+						}
+					};
+				</script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

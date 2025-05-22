@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery 手机号+验证码倒计时功能</title>
+
+    <!-- JQuery CDN(失效自行更换引入) -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+
+<!-- 视图 -->
+<input id="reg_phone" placeholder="请输入手机号" />
+<input id="reg_mescode" placeholder="请输入验证码" />
+<button id="reg_mescode_btn" able="able">获取验证码</button>
+<!-- END -->
+
+
+<script>
+// 获取短信验证码(需要自行加入额外验证及调用接口逻辑)
+var mesdong=null;
+var mestime=60;
+$("#reg_mescode_btn").click(function(){
+    if($(this).attr('able')=="able") {
+        // 1. 校验数据(比如手机号是否填写)
+       
+        // 2. 通过验证,执行倒计时60秒
+        $(this).attr('able',"disable");
+        $(this).css('cursor','not-allowed');
+        $(this).html(mestime+"秒后重发");
+        mesdong = setInterval(function() {
+            mestime-=1;
+            if(mestime<0){
+                $("#reg_mescode_btn").attr('able',"able");
+                $("#reg_mescode_btn").css('cursor','pointer');
+                $("#reg_mescode_btn").html('获取验证码');
+                mestime=60;
+                clearInterval(mesdong);
+            }else{
+                $("#reg_mescode_btn").html(mestime+"秒后重发");			
+            };
+        }, 1000);
+
+        // 3. Ajax请求接口
+        // ...
+    }
+})
+</script>
+
+</body>
+</html>

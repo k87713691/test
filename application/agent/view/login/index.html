@@ -1,0 +1,73 @@
+<html lang="zh"><head><title>{$title}-{:sysconf('app_name')}</title><meta charset="utf-8"><meta name="renderer" content="webkit"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=0.4"><link rel="shortcut icon" href="/upload/725ebf21dbe53230/804d2fe329bca74e.png"><link rel="stylesheet" href="/static/plugs/awesome/fonts.css?at=0601"><link rel="stylesheet" href="/static/plugs/layui/css/layui.css?at=0601"><link rel="stylesheet" href="/static/theme/css/console.css?at=0601"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><script>if (location.href.indexOf('#') > -1) location.replace(location.href.split('#')[0])</script><link rel="stylesheet" href="/static/theme/css/login.css"><script>window.ROOT_URL = '';</script><script src="/static/plugs/jquery/pace.min.js"></script><link id="layuicss-laydate" rel="stylesheet" href="/static/plugs/layui/css/modules/laydate/default/laydate.css?v=5.0.9" media="all"><link id="layuicss-layer" rel="stylesheet" href="/static/plugs/layui/css/modules/layer/default/layer.css?v=3.1.1" media="all"><link id="layuicss-skincodecss" rel="stylesheet" href="/static/plugs/layui/css/modules/code.css" media="all"><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="md5" src="/static/plugs/jquery/md5.min.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="md5" src="/static/plugs/jquery/md5.min.js"></script></head><body class="layui-layout-body       pace-done pace-done"><div class="pace  pace-inactive pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+  <div class="pace-progress-inner"></div>
+</div>
+<div class="pace-activity"></div></div><div class="pace  pace-inactive pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);"><div class="pace-progress-inner"></div></div><div class="pace-activity"></div></div><div class="login-container" data-supersized="/static/theme/img/login/bg1.jpg,/static/theme/img/login/bg2.jpg"><form data-login-form="" onsubmit="return false" method="post" class="layui-anim layui-anim-upbit" autocomplete="off" novalidate="novalidate"><h2 class="notselect">{$title}</h2><ul><li class="username"><label><i class="layui-icon layui-icon-username"></i><input class="layui-input validate-error" required="" pattern="^\S{4,}$" name="username" autofocus="" autocomplete="off" placeholder="登录账号" title="请输入登录账号"><span style="padding-right: 12px; color: rgb(169, 68, 66); position: absolute; right: 0px; font-size: 12px; z-index: 2; display: block; width: auto; text-align: center; pointer-events: none; top: 0px; padding-bottom: 0px; line-height: 45px;" class="layui-anim layui-anim-fadein">请输入登录账号</span><span style="padding-right: 12px; color: rgb(169, 68, 66); position: absolute; right: 0px; font-size: 12px; z-index: 2; display: block; width: auto; text-align: center; pointer-events: none; top: 0px; padding-bottom: 0px; line-height: 45px;" class="layui-anim layui-anim-fadein">请输入登录账号</span></label></li><li class="password"><label><i class="layui-icon layui-icon-password"></i><input class="layui-input validate-error" required="" pattern="^\S{4,}$" name="password" maxlength="32" type="password" autocomplete="off" placeholder="登录密码" title="请输入登录密码"><span style="padding-right: 12px; color: rgb(169, 68, 66); position: absolute; right: 0px; font-size: 12px; z-index: 2; display: block; width: auto; text-align: center; pointer-events: none; top: 0px; padding-bottom: 0px; line-height: 45px;" class="layui-anim layui-anim-fadein">请输入登录密码</span></label></li><li class="verify"><label class="inline-block relative"><i class="layui-icon layui-icon-picture-fine"></i><input class="layui-input" required="" pattern="^\S{4,}$" name="verify" maxlength="4" autocomplete="off" placeholder="验证码" title="请输入验证码" value=""></label><label data-captcha="/agent/login/captcha" data-field-verify="verify" data-field-uniqid="uniqid" data-captcha-type="login_captcha" data-captcha-token="202106014709933488"><img alt="img" src="data:image/png;base64,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"><input type="hidden" name="uniqid" value="captcha60b60dc2cf5ee2874"></label></li><li class="text-center padding-top-20"><button type="submit" class="layui-btn full-width">立即登入</button></li></ul></form><div class="footer notselect">
+        <p class="layui-hide-xs"><a target="_blank" href="https://www.google.cn/chrome">{$title}-{:sysconf('app_name')}</a></p>
+        {:sysconf('site_copy')}
+        {if sysconf('miitbeian')}<span class="padding-5">|</span><a target="_blank" href="http://beian.miit.gov.cn">{:sysconf('miitbeian')}</a>{/if}
+    </div></div><script src="/static/plugs/layui/layui.all.js"></script><script src="/static/plugs/require/require.js"></script><script src="/static/admin.js"></script><script>	var noticeoff=0;
+	var int;
+	if(noticeoff==0){
+		seeNum();
+		int=setInterval(seeNum,15000);
+	}
+    
+    $('.ignore').click(function(){
+    	$.get("/agent/index/system_ignore",function(data,status){
+	    	layer.msg("所有提醒已忽略~");
+	    	$('#noticeimg').attr('src','/static/theme/img/ignore.png');
+    	});
+    	// if(noticeoff==0){
+    	// 	$.get("/agent/index/system_ignore",function(data,status){
+	    //         layer.msg("所有提醒已忽略~");
+	    //       // $('.ignore').hide();
+     //   	});
+     //   	$('#noticeimg').attr('src','/static/theme/img/ignore.png');
+     //   	noticeoff=1;
+     //   	window.clearInterval(int);
+    	// }else{
+    	// 	noticeoff=0;
+    	// 	int=setInterval(seeNum,15000);
+    	// 	$('#noticeimg').attr('src','/static/theme/img/notice.png');
+    	// }
+        
+    });
+    function seeNum(){
+        var seeNumUrl = "/agent/index/check";
+        var rechargeState = 1;//充值声音开关，1开/0关
+        $.ajax({
+            type : "POST",
+            url : seeNumUrl,
+            data: {rechargeState:rechargeState},
+            dataType : "json",
+            success : function(result){
+                if(result['code']==1){
+                    $("#ifr").attr("src",result['data']['url']);
+                    layer.msg(result['info'],{offset:'rb'});
+                    $('#noticeimg').attr('src','/static/theme/img/notice.png');
+                    
+                    //$('.ignore').show();
+                }else{
+                    $("#ifr").attr("src","");
+                    //$('.ignore').hide();
+                }
+            },
+            error:function(){
+            }
+        });
+    }
+    
+</script><style>    .ignore{
+        display: none;
+        position: fixed;
+        bottom: 15px;
+        right: 25px;
+        transition: all .3s ease-in-out;
+        z-index: 99999;
+    }
+    .ignore img{
+        background: #189f92;
+        padding: 10px;
+        border-radius: 100%;
+    }
+</style><script src="/static/login.js"></script><script src="/static/plugs/supersized/supersized.3.2.7.min.js"></script><ul id="supersized"></ul></body></html>

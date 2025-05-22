@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+	<title>{$Think.lang.key_login}</title>
+	<style type="text/css">
+		html {
+	        font-size: 40px;
+	    }
+	    
+	    .company_title {
+    text-align: center;
+    margin-top: 8px;
+    color: white;
+}
+	</style>
+	<link rel="stylesheet" type="text/css" href="__ROOT__/static/wap/css/common.css">
+	<link rel="stylesheet" type="text/css" href="__ROOT__/static/wap/css/login.css">
+	<link rel="stylesheet" type="text/css" href="__ROOT__/static/wap/css/tipmask.css">
+</head>
+<body>
+	<form action="" method="post" id="logins">
+	    <div id="app">
+	        <div class="t_box_login"
+	             style="background-repeat: no-repeat;background-image: linear-gradient(90deg,#03aaff,#3a63ff);">
+	        	<div style="    margin-top: 0.45rem;    color: white;">
+			    	<span id="langset"style="float: right;display: inline-block;width: 2.5rem;    line-height: 30px;height: 30px;margin-right: 10px;text-align: center;border-radius: 10px;background: rgb(255,255,255,0.2);" onclick="changelang('list')">{:lang('key_language')}  V</span><br>
+					<div id="langlist"style="display: none;position: absolute;right: 10px;margin-top: 10px;width: 2.5rem;line-height: 30px;text-align: center;
+				    background: rgb(255,255,255,0.2);border-radius: 10px;">
+				        <span id="langcns" onclick="changelang('hk')">简体中文</span><br>
+				        <span id="langcng" onclick="changelang('zh')">繁体中文</span><br>
+				        <span id="langen" onclick="changelang('en')">English</span><br>
+				        <!--<span id="langth" onclick="changelang('th')">ภาษาไทย</span><br>-->
+				        <!--<span id="langth" onclick="changelang('jp')">日本语</span><br>-->
+				        <!--<span id="langth" onclick="changelang('kor')">한국어</span><br>-->
+				        <!--<span id="langth" onclick="changelang('fr')">Français</span><br>-->
+				        <!--<span id="langth" onclick="changelang('de')">Deutsch</span><br>-->
+				        <!--<span id="langth" onclick="changelang('es')">español</span>-->
+				    </div>
+			    	
+			    </div>
+	            <div class="t_logo" style="    margin-top: 2rem;"><img style="height:3.16rem" src="{:getInfo('login_img')}">
+	            <div class="company_title">
+	                
+	            </div>
+                <div class="login_box">
+	                <ul>
+	                    <li><i></i> 
+	                    	<input type="text" placeholder="{$Think.lang.input_account}" onfocus="this.placeholder=''"
+	                                       onblur="this.placeholder='{$Think.lang.input_account}'" name="account" id="phonenumber" style="border-radius: 5px;
+    background: none;border: 1px solid hsla(0, 0%, 100%, .3);"></li>
+	                    <li><i></i> 
+	                    	<input type="password" placeholder="{$Think.lang.input_password}" onfocus="this.placeholder=''"
+	                                       onblur="this.placeholder='{$Think.lang.input_password}" name="password" id="password" style="border-radius: 5px;
+    background: none;border: 1px solid hsla(0, 0%, 100%, .3);"></li>
+	                    <li><input type="button" value="{$Think.lang.key_login}" id="login_btn"></li>
+	                    <!--<li><input type="button" value="会员注册" id="reg_btn"></li>-->
+	                </ul>
+	                 <div class="company_title">
+	                <span style="font-size:15px;" id="reg_btn">--{$Think.lang.open_account}--</span>
+	                  <br><br>
+	                 <!--<p id="reg_btn">{$Think.lang.key_zxrs}: <span id="Haaaa_0"></span> </p> -->
+	                     <br> 
+	                <a href="{$app.service}"></script>"  >--在线客服--</a>
+	                  </div>
+	                 
+				</div>
+	        </div>
+	    </div>
+	</form>
+	<div class="tipMask hide">
+	    <div class="cont">
+	        <p class="title">{$Think.lang.key_tips}</p>
+	        <p class="stitle contents"></p>
+	        <div id="msgBtn">
+	            <div class="confirm guanbi" style="background-color:#33B497;">{$Think.lang.key_confirm}</div>
+	        </div>
+	    </div>
+	</div>
+	<script src="__ROOT__/static/wap/js/jquery-1.9.1.min.js"></script>
+	<script>
+		function changelang(t){
+		if(t=="list"){
+			$('#langlist').fadeToggle();return;
+		}else{
+			$.ajax({
+				type:'get',
+				url:'/index/index/changelang?lang='+t,
+				dataType : "json",
+				success : function(res){
+					console.log(t);
+					window.localStorage.setItem('lang',t);
+					var td=$('#lang'+t).text();
+					$('#langset').text(td);
+					//$('#langlist').fadeToggle();
+					window.location.reload();
+					
+				}
+				
+			})
+		}
+		
+		
+		
+		
+	};
+	</script>
+<script type="text/javascript">
+	
+	$(function(){
+        $('#reg_btn').click(
+            function(){
+                window.location.href='/index/login/reg';
+            }
+        )
+
+		$('#login_btn').click(function(){
+			var url = "/index/login";
+			$.ajax({
+				type : "POST",
+				url : url,
+				data: {phone:$('#phonenumber').val(),password:$('#password').val()},
+				dataType : "json",
+				success : function(result){
+					if(result.code == 1){
+						msg("{$Think.lang.key_tips}",result.info,2,"/index/index/home");
+					}else{
+						msg("{$Think.lang.key_tips}",result.info,1);
+					}
+				}
+			});
+		})
+	});
+	function msg(title, content, type, url) {
+        $(".contents").html(content);
+        if (type == 1) {
+            var btn = '<div class="confirm guanbi"  style="background-color:#33B497;" onclick="$(\'.tipMask\').hide();">{$Think.lang.key_confirm}</div>';
+        }
+        else {
+            var btn = '<div class="confirm guanbi"  style="background-color:#33B497;" onclick="window.location.href=\'' + url + '\'">{$Think.lang.key_confirm}</div>';
+        }
+        $("#msgBtn").html(btn);
+        $(".tipMask").show();
+    }
+
+</script>
+<script type="text/javascript">
+        
+         function getdtrenshu() {
+        	//$.get('/index/index/product');
+        	//$.get('/index/index/order');
+           $.get('/index/index/ajaxrenshu', '', function(datajson) {
+                var pro = eval('(' + datajson + ')');
+                $.each(pro, function(k, v) {
+                   
+                    hidaa= '#' + 'Haaaa_0';
+                     num1 = parseInt(v.renshu), 
+
+                    $(hidaa).html(v.renshu); //全部的价格进行变动
+                  
+                })
+            });
+         }
+        getdtrenshu();
+        window.setInterval("getdtrenshu()", 1000);
+    </script>
+</body>
+
+
+</html>

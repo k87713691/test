@@ -1,0 +1,272 @@
+{include file="public/header" nav="兑换"}
+<link rel="stylesheet" type="text/css" href="__ROOT__/static/wap/css/tipmask.css">
+<link rel="stylesheet" type="text/css" href="__ROOT__/static/wap/css/box_pay.css">
+<style type="text/css">
+    span {
+        display: inline-block;
+    }
+    body {background:#f9f9f9!important;}
+</style>
+<div id="app">
+    <div class="box"><!---->
+        <div class="jun-content">
+            <div class="t_box_withdraw">
+                <div class="t_header" style="    background: white;">
+                    <span><img src="__ROOT__/static/wap/images/icon_back.png" alt="" onClick="javascript:history.back()"></span> 
+                    <span style="color:black"><i>兑换</i><i style="float:right;position: relative;right: 0;left: 0;top: 50%;font-size: 12px;margin-right: -5px;" onclick="window.location.href='exchange_record'">兑换记录</i></span>
+                    
+                </div>
+                <style>
+                	.t_box_withdraw .t_con_withdraw div input {
+					    margin-top: .133333rem;
+					    height: 1.066667rem;
+					    font-size: .4rem;
+					    text-indent: .266667rem;
+					    background-color: rgb(0,0,0,0);
+					    border: none;
+					    outline: none;
+					    color: gray;
+					}
+					.t_box_withdraw .t_con_withdraw div label {
+					    display: inline-block;
+					    margin-left: .4rem;
+					    color: gray;
+					    width: 2.666667rem;
+					    font-size: .4rem;
+					    height: 100%;
+					    line-height: 1.333333rem;
+					    float: left;
+					}
+					.t_box_withdraw .t_con_withdraw div {
+					    height: 1.333333rem;
+					    font-size: .4rem;
+					    border-bottom: .026667rem solid #ececec;
+					    position: relative;
+					    display: flex;
+					    flex-direction: row;
+					}
+					.t_box_withdraw .t_con_withdraw .notice p {
+					    color: gray;
+					    font-size: .32rem;
+					    text-indent: .4rem;
+					    margin-bottom: .133333rem;
+					}
+                </style>
+                <div class="" style="background:#fff;border-top:1px solid #d3d3d3">
+                	<div style="display:block;padding:15px;text-align:center;height:120px;line-height:30px;box-shadow:0 0 3px 2px grey;background:linear-gradient(11deg,#8eb2f3,#ffff84)">
+                		<div style="display:inline-block;width:35%;height:120px;float:left">
+                			<div style="display:block">
+                				<img src="../../static/wap/images/icon_my_revenue_and_expenditure@2x.png">
+                			</div>
+                			<div>现金钱包</div>
+                			<div id="mymoney" money="{$user.money}">￥{$user.money}元</div>
+                		</div>
+                		<span style="display:inline-block;width:25%;height:auto;position:relative;margin-top:40px">
+                			<img src="../../static/wap/images/transer.png" style="width:45px">
+                		</span>
+                		<div style="display:inline-block;width:35%;height:120px;float:right">
+                			<div><img src="../../static/wap/images/icon_my_revenue_and_expenditure@2x.png"></div>
+                			<div><select name="userwallets" style="border:none;border-bottom:2px solid #b1b1b1;background:0 0">
+	                			{foreach $userwallets as $x}
+	                			<option value="{$x.id}" huli="{$x.huli}" price="{$x.price}" rmbval1="{$x.rmbval}" title="{$x.title}" id="wallet_{$x.id}" balance="{$x.balance}<">{$x.title}:{$x.balance}</option>
+	                			{/foreach}
+                			</select></div>
+                			<div >￥<span id="rmbval2"></span>元</div>
+                		</div>
+                	</div>
+                	<div style="height:120px;text-align:center;line-height:30px;margin:10px;background:#f9f9f9;color:#000;box-shadow:0 0 4px 2px #909cee">
+                		<div style="padding-top:15px">
+                			<input name="m2c" type="text" style="background:0 0;border-bottom:2px solid;text-align:center" placeholder="请填写支付现金金额" oninput="OnInputcoin(event)" onpropertychange="OnPropChanged(event)">
+                		</div>
+                		<div>你将支出<span id="paymoney"></span>元，得到：<span id="getcoin"></span></div>
+                		<div><span style="width:100px;background:#a8b1f0;border-radius:5px;color:#fff" onclick="dom2c()">现金转币</span></div>
+                	</div>
+                	<div style="height:120px;text-align:center;line-height:30px;margin:10px;background:#f9f9f9;color:#000;box-shadow:0 0 4px 2px #ee9090">
+                		<div style="padding-top:15px">
+                			<input name="c2m" type="text" style="background:0 0;border-bottom:2px solid;text-align:center" placeholder="请填写支付数字货币数量" oninput="OnInputmoney(event)" onpropertychange="OnPropChanged(event)">
+                		</div>
+                		<div>你将支出：<span id="paycoin"></span>个<span id="cointitle"></span>，得到现金：<span id="getmoney"></span>元</div>
+                		<div><span style="width:100px;background:#f1a9a9;border-radius:5px;color:#fff" onclick="doc2m()">币转现金</span></div>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <style>
+	.footer div{
+		display: inline-block;
+	    width: 20%;
+	    text-align: center;
+	    height: 50px;
+	    line-height: 25px;
+	    
+	}
+	.footer img{
+		width: 20px;
+    	height: 20px;
+    	    margin-top: 5px;
+	}
+	.footer span{
+		color:gray;
+		    font-size: 12px;
+	}
+</style>
+<div class="footer" style="background-color: white;height: 50px;display: block;z-index: 100;">
+	<div>
+		<a href="/index/index/home" class="t_span one ">
+			<img src="../../static/wap/images/market.png"><br>
+			<span>行情</span>
+		</a>
+	</div>
+	<div>
+		<a href="/index/user/wallet" class="t_span two "><img src="../../static/wap/images/assets.png"><br><span>资产</span></a>
+	</div>
+	<div>
+		<a href="/index/user/hold" class="t_span three"><img src="../../static/wap/images/trading.png"><br><span>交易记录</span></a>
+	</div>
+	<div>
+		<a href="/index/user/yeb" class="t_span four"><img src="../../static/wap/images/copy_trading.png"><br><span>余额宝</span></a>
+	</div>
+	<div>
+		<a href="/index/user/index" class="t_span five router-link-exact-active"><img src="../../static/wap/images/user_active.png"><br><span style="color: rgb(58, 99, 255);">我的</span></a>
+	</div>
+</div>
+    </div>
+
+<div class="tipMask hide">
+    <div class="cont">
+        <p class="title">温馨提示</p>
+        <p class="stitle contents"></p>
+        <div id="msgBtn">
+            <div class="confirm guanbi">确定</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="__ROOT__/static/wap/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+	(function(){
+		recount();
+		$('[name="userwallets"]').change(function(){ recount();});
+
+	})();
+		
+
+    function recount(){
+    	var uwsid=$('[name="userwallets"]').val();
+		var setrmbval=($('#wallet_'+uwsid).attr('rmbval1'));
+		
+		$('#rmbval2').text(setrmbval);
+		$('[name="c2m"]').val("");
+		$('[name="m2c"]').val("");
+	//	$('[name="c2m"]').val(setrmbval);
+		//$('#max2m').text(setrmbval);
+    	
+    }
+
+    function msg(title, content, type, url) {
+        $(".contents").html(content);
+        if (type == 1) {
+            var btn = '<div class="confirm guanbi" onclick="$(\'.tipMask\').hide();">确定</div>';
+        }
+        else {
+            var btn = '<div class="confirm guanbi" onclick="window.location.href=\'' + url + '\'">确定</div>';
+        }
+        $("#msgBtn").html(btn);
+        $(".tipMask").show();
+    }
+    
+    function OnInputcoin (event) {
+        var setmoney=$('[name="m2c"]').val();
+        var uwsid=$('[name="userwallets"]').val();
+        var price=$('#wallet_'+uwsid).attr('price');
+        var title=$('#wallet_'+uwsid).attr('title');
+        var huli=$('#wallet_'+uwsid).attr('huli');
+        var getcoin=(setmoney/(price*huli)).toFixed(8);
+        $('#paymoney').text(setmoney);
+        $('#getcoin').text(getcoin+"个"+title);
+    }
+    
+    function OnInputmoney (event) {
+        var paycoin=$('[name="c2m"]').val();
+        var uwsid=$('[name="userwallets"]').val();
+        var price=$('#wallet_'+uwsid).attr('price');
+        var title=$('#wallet_'+uwsid).attr('title');
+        var huli=$('#wallet_'+uwsid).attr('huli');
+        var getmoney=(paycoin*(price*huli)).toFixed(3);
+        $('#paycoin').text(paycoin);
+        $('#cointitle').text(title);
+        $('#getmoney').text(getmoney);
+    }
+    
+    function dom2c(){
+    	var setmoney=Number($('[name="m2c"]').val());
+    	var mymoney=Number($('#mymoney').attr('money'));
+    	if(setmoney>mymoney||setmoney==""){
+    		msg('温馨提示','现金金额填写错误，请检查！',1,'#');return;
+    	};
+        var uwsid=$('[name="userwallets"]').val();
+        var price=$('#wallet_'+uwsid).attr('price');
+        var title=$('#wallet_'+uwsid).attr('title');
+        var huli=$('#wallet_'+uwsid).attr('huli');
+        var getcoin=(setmoney/(price*huli)).toFixed(8);
+        var type="m2c";
+        $.ajax({
+		    type: "post",
+		    url: "exchange_m2c",
+		    dataType: "json",
+		    data: {wid: uwsid, money: setmoney, getcoin: getcoin,price:price,title:title,huli:huli,type:type},
+		    success: function (res) {
+		        if (res=="true") {
+		        	msg('温馨提示','操作成功！',1,'#');
+		        	window.setTimeout(function(){window.location.reload();},1000);
+		           // window.location.reload();
+		            // layer.alert('更新排序字段成功!', {icon: 1}, function(){
+		            //     window.location.reload();
+		            // });
+		        } else {
+		            msg('温馨提示','网络异常，请稍后再试！',1,'#');return;
+		        }
+		    }
+		});
+    	
+    }
+    
+    function doc2m(){
+    	var paycoin=$('[name="c2m"]').val();
+        var uwsid=$('[name="userwallets"]').val();
+        var balance=$('#wallet_'+uwsid).attr('balance');
+        if(paycoin>balance||paycoin==""){
+    		msg('温馨提示','数字货币数量填写错误，请检查！',1,'#');return;
+    	};
+        var price=$('#wallet_'+uwsid).attr('price');
+        var title=$('#wallet_'+uwsid).attr('title');
+        var huli=$('#wallet_'+uwsid).attr('huli');
+        var getmoney=(paycoin*(price*huli)).toFixed(3);
+        var type="c2m";
+        $.ajax({
+		    type: "post",
+		    url: "exchange_c2m",
+		    dataType: "json",
+		    data: {wid: uwsid, paycoin: paycoin, getmoney: getmoney,price:price,title:title,huli:huli,type:type},
+		    success: function (res) {
+		        if (res=="true") {
+		        	msg('温馨提示','操作成功！',1,'#');
+		        	window.setTimeout(function(){window.location.reload();},1000);
+		           // window.location.reload();
+		            // layer.alert('更新排序字段成功!', {icon: 1}, function(){
+		            //     window.location.reload();
+		            // });
+		        } else {
+		            msg('温馨提示','网络异常，请稍后再试！',1,'#');return;
+		        }
+		    }
+		});
+    	
+    }
+</script>
+</body>
+
+</html>
+
+

@@ -1,0 +1,29 @@
+                <div class="footer">
+                    <div><a href="/index/index/home" class="t_span one"><i></i><span>{$Think.lang.key_market}</span></a></div>
+                    <div><a href="/index/user/yeb" class="t_span three"><i></i><span>{$Think.lang.yuebao_title}</span></a></div>
+                    <div><a href="/index/user/hold" class="t_span four"><i></i><span>{$Think.lang.key_orders}</span></a></div>
+                    <div><a href="{:getInfo('service')}" class="t_span five"><i></i><span>{$Think.lang.key_cs}</span></a></div>
+                    <div><a href="/index/user/index" class="t_span fix"><i></i><span>{$Think.lang.key_mine}</span></a></div>
+                </div>
+                <script type="text/javascript" src="__ROOT__/static/wap/js/jquery-1.9.1.min.js"></script>
+                
+				<script type="text/javascript">
+				    $(function(){
+				        var nav = "[menu]";
+				        if(nav == "index"){
+				            $(".one").addClass("router-link-exact-active");
+				        }
+				        if(nav == "yeb"){
+				            $(".three").addClass("router-link-exact-active");
+				        }
+				        if(nav == "hold"){
+				            $(".four").addClass("router-link-exact-active");
+				        }
+				        if(nav == "user"){
+				            $(".five").addClass("router-link-exact-active");
+				        }
+				        if(nav == "user"){
+				            $(".fix").addClass("router-link-exact-active");
+				        }
+				    })
+				</script>

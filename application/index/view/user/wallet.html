@@ -1,0 +1,220 @@
+{include file="public/header" nav='首页'}
+<link rel="stylesheet" type="text/css" href="__ROOT__/static/theme/index/css/mine.css"/>
+<link rel="stylesheet" type="text/css" href="/static/theme/index/css/swiper.min.css">
+<!--<link rel="stylesheet" type="text/css" href="__ROOT__/static/theme/index/css/footer.css"/>-->
+<script type="text/javascript" src="__ROOT__/static/theme/index/js/jquery.js"></script>
+<script type="text/javascript" src="__ROOT__/static/theme/index/js/font.js"></script>
+<script type="text/javascript" src="__ROOT__/static/theme/index/js/public.js"></script>
+
+</head>
+<style type="text/css">
+    .bar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 10;
+        height: 45px;
+        color: #fff;
+        background: linear-gradient(to right, #3476fe, #34c7fe) !important;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+    #alltit {
+        position: absolute;
+        z-index: 19;
+        width: 100%;
+        text-align: center;
+        display: inline-block;
+        line-height: 45px;
+        font-size: 16px;
+        color: #fff;
+    }
+    .page, .page-group {
+        box-sizing: border-box;
+	    margin: 0 auto;
+	    overflow: hidden;
+	    background: linear-gradient(56deg, #59acf1, #34a2fe);
+	        height: 100%;
+    }
+    #main_content {
+        padding-bottom: 1rem;
+        width: 100%;
+        margin: 0 auto;
+    }
+    img {
+        vertical-align: middle;
+    }
+    .contentlist {
+        overflow: hidden;
+        width: 94%;
+        margin: 150px auto;
+    }
+    .contentlist li {
+        background-color: #fff;
+        width: 49%;
+        float: left;
+        padding: 0.4rem 0;
+        border-radius: 0.2rem;
+        position: relative;
+        margin-bottom: 0.2rem;
+    }
+    .contentlist li img {
+        position: absolute;
+        width: 28px;
+        right: 0.22rem;
+        top: 0.3rem;
+    }
+    .contentlist li .text1 {
+        margin-left: .3rem;
+        color: #000000;
+        display: block;
+        font-size: 14px;
+    }
+    .contentlist li .text2 {
+        color: #000000;
+        display: block;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 0.2rem;
+        margin-left: .3rem;
+    }
+</style>
+<body>
+<header class="bar bar-nav">
+    <a id="alltit">{$Think.lang.assets_title}</a>
+</header>
+<div class="page"><div class="content" id="main_content" style="background: white;"><div style="width: 100%;height: 2rem;background: linear-gradient(to right, #fdfdfd, #fdfdfd) !important;border-radius: 5px;"></div><div style="width:94%;margin: 0 3%;background:url('/static/theme/index/img/panbg.png') no-repeat center center;background-size: 100% 100%;height: 150px;position:absolute;top: 1.1rem;padding-top: 0.6rem;"><div style="font-size: 16px;color: #fff;margin-left: 0.4rem">{$Think.lang.key_total_balance}<img class="ybtn cur" src="/static/theme/index/img/yopen.png" style="width: 20px;margin-top:-0.05rem;margin-left: 0.1rem" alt=""></div><div style="font-size: 20px;color: #fff;margin-left: 0.3rem;margin-top:0.1rem;">
+                CNY:{$user.money}</div><div style="width: 100%;overflow:hidden;position:absolute; 0.36rem"><a href="/index/user/recharge"><div style="display:inline-block;width: 24.5%;text-align:center;font-size: 14px;color: #fff;border-right: 1px solid #fff"><img style="width: 25px;margin-top:-0.05rem;margin-right:0.1rem" src="/static/theme/index/img/czico.png" alt="">{$Think.lang.key_recharge}</div></a><a href="/index/user/cash"><div style="display:inline-block;width: 24.5%;text-align:center;font-size: 14px;color: #fff;border-right:"><img style="width: 25px;margin-top:-0.05rem;margin-right:0.1rem" src="/static/theme/index/img/txico.png" alt="">{$Think.lang.key_withdraw}</div><!--     </a><a href="/index/user/recharge_record"><div style="display:inline-block;width: 24.5%;text-align:center;font-size: 14px;color: #fff;border-right: 1px solid #fff"><img style="width: 25px;margin-top:-0.05rem;margin-right:0.1rem" src="/static/theme/index/img/txico.png" alt="">加仓记录</div></a><a href="/index/user/cash_record"><div style="display:inline-block;width: 24.5%;text-align:center;font-size: 14px;color: #fff;"><img style="width: 25px;margin-top:-0.05rem;margin-right:0.1rem" src="/static/theme/index/img/txico.png" alt="">取款记录</div> --></a></div></div><style>
+        	.contentlist li {
+			    background-color: #fff;
+			    width: 100%;
+			    float: left;
+			    padding: 0.4rem 0;
+			    border-radius: 0.2rem;
+			    position: relative;
+			    margin-bottom: 0.2rem;
+			}
+        </style><ul class="contentlist"><!--     <li style="margin-right: 1%;">--><img src="https://cdn.pixabay.com/animation/2023/03/10/13/25/13-25-13-552_512.gif" alt=""><!--       <span class="text1">现金钱包</span><div><span class="text2" style="float:left">￥0.00</span><span class="text2" style="float:right;margin-right:10px"> =￥0.00</span></div></li>--></ul></div></div>
+<!--<div class="page">-->
+<!--    <div class="content" id="main_content">-->
+<!--        <div style="width: 100%;height: 2rem;background: linear-gradient(to right, #3476FE, #34C7FE) !important;border-radius: 5px;">-->
+<!--        </div>-->
+<!--        <div style="width:94%;margin: 0 3%;background:url('/static/theme/index/img/panbg.png') no-repeat center center;background-size: 100% 100%;height: 150px;position:absolute;top: 1.1rem;padding-top: 0.6rem;">-->
+<!--            <div style="font-size: 16px;color: #fff;margin-left: 0.4rem">{$Think.lang.key_total_balance}<img class="ybtn cur" src="/static/theme/index/img/yopen.png" style="width: 20px;margin-top:-0.05rem;margin-left: 0.1rem" alt=""></div>-->
+<!--            <div style="font-size: 28px;color: #fff;margin-left: 0.4rem;margin-top:0.1rem;">-->
+<!--                {$user.money}</div>-->
+<!--            <div style="width: 200%;overflow:hidden;position:absolute;bottom: 0.36rem">-->
+<!--                <a href="/index/user/recharge">-->
+<!--                    <div style="display:inline-block;width: 24.5%;text-align:center;font-size: 14px;color: #fff;border-right: 1px solid #fff">-->
+<!--                        <img style="width: 25px;margin-top:-0.05rem;margin-right:0.1rem" src="/static/theme/index/img/czico.png" alt="">{$Think.lang.key_recharge}</div>-->
+<!--                </a>-->
+<!--                <a href="/index/user/cash">-->
+<!--                    <div style="display:inline-block;width: 24.5%;text-align:center;font-size: 14px;color: #fff;/*border-right: 1px solid #fff">-->
+<!--                        <img style="width: 25px;margin-top:-0.05rem;margin-right:0rem" src="/static/theme/index/img/txico.png" alt="">{$Think.lang.key_withdraw}</div>-->
+<!--                </a>-->
+               
+<!--            </div>-->
+<!--        </div>-->
+          <!--a href="/index/user/exchange">
+<!--                    <div style="display:inline-block;width: 24.5%;text-align:center;font-size: 14px;color: #fff;border-right: 1px solid #fff">-->
+<!--                        <img style="width: 25px;margin-top:-0.05rem;margin-right:0.1rem" src="/static/theme/index/img/txico.png" alt="">{$Think.lang.key_exchange}</div>-->
+<!--                </a>-->
+<!--                <a href="javascript:msg('{$Think.lang.key_tips}','{$Think.lang.key_developing}',1,'#');">-->
+<!--                    <div style="display:inline-block;width: 24.5%;text-align:center;font-size: 14px;color: #fff;">-->
+<!--                        <img style="width: 25px;margin-top:-0.05rem;margin-right:0.1rem" src="/static/theme/index/img/txico.png" alt="">{$duihuobi}</div>-->
+<!--                </a-->-->
+<!--        <style>-->
+<!--        	.contentlist li {-->
+<!--			    background-color: #fff;-->
+<!--			    width: 100%;-->
+<!--			    float: left;-->
+<!--			    padding: 0.4rem 0;-->
+<!--			    border-radius: 0.2rem;-->
+<!--			    position: relative;-->
+<!--			    margin-bottom: 0.2rem;-->
+<!--			}-->
+<!--        </style>-->
+<!--        <ul class="contentlist">-->
+<!--            <li style="margin-right: 1%;">-->
+<!--                <img src="/static/theme/index/img/listico3.png" alt="">-->
+<!--                <span class="text1">{$Think.lang.assets_cash_package}</span>-->
+<!--                <div><span class="text2" style="float:left">{$lcinfoa}{$duihuobi} </span> <span class="text2" style="float:right;margin-right:10px"> = {$user.money} RMB</span></div>-->
+<!--            </li>-->
+<!--            {foreach $userwallets as $x}-->
+<!--            <li style="margin-right: 1%;">-->
+<!--                <img src="/static/theme/index/img/listico3.png" alt="">-->
+<!--                <span class="text1">{$x.title}-{$Think.lang.key_package}</span>-->
+<!--                <div><span class="text2" style="float:left">{$x.balance}</span> <span class="text2" style="float:right;margin-right:10px"> ={$Think.lang.key_dollars}{$x.rmbval}</span></div>-->
+<!--            </li>-->
+<!--            {/foreach}-->
+           
+<!--        </ul>-->
+<!--    </div>-->
+<!--</div>-->
+<style>
+	.footer div{
+		display: inline-block;
+	    width: 20%;
+	    text-align: center;
+	    height: 50px;
+	    line-height: 25px;
+	    
+	}
+	.footer img{
+		width: 20px;
+    	height: 20px;
+    	    margin-top: 5px;
+	}
+	.footer span{
+		color:gray;
+		    font-size: 12px;
+	}
+</style>
+<div class="footer" style="background-color: white;height: 50px;display: block;z-index: 100;">
+	<div>
+		<a href="/index/index/home" class="t_span one ">
+			<img src="../../static/wap/images/market.png"><br>
+			<span>{$Think.lang.key_market}</span>
+		</a>
+	</div>
+	<div>
+		<a href="/index/user/wallet" class="t_span two router-link-exact-active"><img src="../../static/wap/images/assets_active.png"><br><span style="color: rgb(58, 99, 255);">{$Think.lang.key_assets}</span></a>
+	</div>
+	<div>
+		<a href="/index/user/hold" class="t_span three"><img src="../../static/wap/images/trading.png"><br><span>{$Think.lang.key_orders}</span></a>
+	</div>
+	<div>
+		<a href="/index/user/yeb" class="t_span four"><img src="../../static/wap/images/icon_my_vouchers@2x.png"><br><span>{$Think.lang.key_cs}</span></a>
+	</div>
+	<div>
+		<a href="/index/user/index" class="t_span five"><img src="../../static/wap/images/user.png"><br><span>{$Think.lang.key_mine}</span></a>
+	</div>
+</div>
+<link rel="stylesheet" type="text/css" href="__ROOT__/static/wap/css/tipmask.css">
+<div class="tipMask" style="display:none">
+    <div class="cont">
+        <p class="title">{$Think.lang.key_tips}</p>
+        <p class="stitle contents"></p>
+        <div id="msgBtn">
+            <div class="confirm guanbi" style="background-color:#33B497;">{$Think.lang.key_ok}</div>
+        </div>
+    </div>
+</div>
+<script>
+function msg(title, content, type, url) {
+	
+    $(".contents").html(content);
+    if (type == 1) {
+        var btn = '<div class="confirm guanbi"  style="background-color:#33B497;" onclick="$(\'.tipMask\').hide();">{$Think.lang.key_ok}</div>';
+    }
+    else {
+        var btn = '<div class="confirm guanbi"  style="background-color:#33B497;" onclick="window.location.href=\'' + url + '\'">{$Think.lang.key_ok}</div>';
+    }
+    $("#msgBtn").html(btn);
+    $(".tipMask").show();
+}
+</script>
+{include file="public/footer" menu='wallet'}
+
+</body>
+</html>

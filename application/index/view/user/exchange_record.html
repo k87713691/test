@@ -1,0 +1,82 @@
+{include file="public/header" nav="提现记录"}
+<link rel="stylesheet" type="text/css" href="__ROOT__/static/wap/css/box_pay.css">
+<style>	
+	body {
+		background:#f3f3f3!important;
+	}
+	.t_header {
+	    height: 1.2rem !important;
+	    width: 100%;
+	    background-color: #ffffff;
+	    display: flex;
+	    flex-direction: row;
+	    z-index: 1000;
+	}
+	.f_box_accountrecord .t_box_accountrecord ul {
+	    display: flex;
+	    flex-direction: column;
+	    padding: .533333rem .8rem;
+	    font-size: .4rem;
+	    border-top: .026666rem solid #b9b9b9;
+	    color: gray;
+	    background-color: #eaeaea;
+	    border-bottom: .026666rem solid #b9b9b9;
+	}
+</style>
+<div id="app">
+    <div class="box"><!---->
+        <div class="jun-content">
+            <div class="f_box_accountrecord">
+                <div class="t_header">
+                    <span><img src="__ROOT__/static/wap/images/icon_back.png" alt="" onClick="javascript:history.back()"></span> 
+                    <span style="color:black"><i>提现记录</i></span>
+                </div>
+				<div class="t_box_accountrecord">
+					{if count($list) > 0}
+                    {volist name="list" id="r"}
+                    <ul>
+                        <li>
+                            <span>兑换时间：</span>
+                            <p>{$r.time}</p>
+                        </li>
+                        <li>
+                            <span>兑换类型：</span>
+                            <p>{$r.type}</p>
+                        </li>
+                        <li>
+                            <span>兑换品种：</span>
+                            <p>{$r.coin_title}</p>
+                        </li>
+                        <li>
+                            <span>兑换前余额：</span>
+                            <p>{$r.bre_balance}</p>
+                        </li>
+                        <li>
+                            <span>现金增加/减少：</span>
+                            <p>{$r.aft_balance-$r.bre_balance}</p>
+                        </li>
+                        <li>
+                            <span>兑换前数量：</span>
+                            <p>{$r.bre_coin}</p>
+                        </li>
+                        <li>
+                            <span>币增加/减少：</span>
+                            <p>{$r.aft_coin-$r.bre_coin}</p>
+                        </li>
+                        
+                    </ul>
+                    {/volist}
+                    {else/}
+                    <div class="dataNo">
+                        <h3>没有更多数据了</h3>
+                    </div>
+                    {/if}
+				</div>
+			</div>
+        </div>
+        {include file="public/footer" menu='user'}
+    </div>
+</div>
+</body>
+</html>
+

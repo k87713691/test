@@ -1,0 +1,64 @@
+{include file="public/header" nav="首页"}
+<link rel="stylesheet" type="text/css" href="__ROOT__/static/wap/css/box_pay.css">
+<style>	
+	body {
+		background:#f3f3f3!important;
+	}
+	.t_header {
+	    height: 1.2rem !important;
+	    width: 100%;
+	    background-color: #ffffff;
+	    display: flex;
+	    flex-direction: row;
+	    z-index: 1000;
+	}
+	.f_box_accountrecord .t_box_accountrecord ul {
+	    display: flex;
+	    flex-direction: column;
+	    padding: .533333rem .8rem;
+	    font-size: .4rem;
+	    border-top: .026666rem solid #b9b9b9;
+	    color: gray;
+	    background-color: #eaeaea;
+	    border-bottom: .026666rem solid #b9b9b9;
+	}
+</style>
+<div id="app">
+    <div class="box"><!---->
+        <div class="jun-content">
+            <div class="f_box_accountrecord">
+                <div class="t_header">
+                    <span><img src="__ROOT__/static/wap/images/icon_back.png" alt="" onClick="javascript:history.back()"></span> 
+                    <span style="color:black"><i>{$Think.lang.withdraw_records}</i></span>
+                </div>
+                <div>
+	            		<div class="itemlists" style="margin-top: 10px;background: white;">
+				<div style="background: white;height: 50px;line-height: 50px;padding: 0 10px;" onclick="window.location.href='https://www.okx.com'">
+		            			<img src="../../static/wap/images/icon_user_1.38a51fad.png" style="width: 30px;height: 30px;top: 50%;position: relative;transform: translate(0,-50%);">
+							    <span style="margin-left: 10px;">{$Think.lang.user_information}</span>
+							    <img style="float: right;top: 50%;position: relative;transform: translate(0,-50%);" src="../../static/wap/images/jt.png">
+						    </div>
+						     <div style="background: white;height: 50px;line-height: 50px;padding: 0 10px;" onclick="window.location.href='https://www.binance.com/zh-CN'">
+		            			<img src="../../static/wap/images/icon_user_1.38a51fad.png" style="width: 30px;height: 30px;top: 50%;position: relative;transform: translate(0,-50%);">
+							    <span style="margin-left: 10px;">{$Think.lang.user_share}</span>
+							    <img style="float: right;top: 50%;position: relative;transform: translate(0,-50%);" src="../../static/wap/images/jt.png">
+						    </div>
+						    <div style="background: white;height: 50px;line-height: 50px;padding: 0 10px;" onclick="window.location.href='https://watch.wave.video/xQhxoS04H2siCugO'">
+		            			<img src="../../static/wap/images/icon_user_1.38a51fad.png" style="width: 30px;height: 30px;top: 50%;position: relative;transform: translate(0,-50%);">
+							    <span style="margin-left: 10px;">{$Think.lang.language_change}</span>
+							    <img style="float: right;top: 50%;position: relative;transform: translate(0,-50%);" src="../../static/wap/images/jt.png">
+						    </div>
+						    <div style="background: white;height: 50px;line-height: 50px;padding: 0 10px;" onclick="window.location.href='https://watch.wave.video/AJanvcLDI2ZB6Ga4'">
+		            			<img src="../../static/wap/images/icon_user_1.38a51fad.png" style="width: 30px;height: 30px;top: 50%;position: relative;transform: translate(0,-50%);">
+							    <span style="margin-left: 10px;">{$Think.lang.app_download}</span>
+							    <img style="float: right;top: 50%;position: relative;transform: translate(0,-50%);" src="../../static/wap/images/jt.png">
+						    </div>
+				</div>
+			</div>
+        </div>
+        {include file="public/footer" menu='user'}
+    </div>
+</div>
+</body>
+</html>
+
